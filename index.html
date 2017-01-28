@@ -1,0 +1,49 @@
+<html ng-app='irene'>
+  <head>
+  </head>
+
+
+<!-- AQUI VIENE EL TOCHO -->
+  <body ng-controller="SampleCtrl">
+    <!-- anything typed in here is magically saved to our Firebase database! -->
+    <input type="text" ng-model="compra.objeto1"/>
+    <!-- all changes from our Firebase database magically appear here! -->
+    <h1>You said: {{ compra.objeto1 }}</h1>
+  </body>
+</html>
+</html>
+
+
+
+<!--    DE AQUI PARA ABAJO NO TOCAMOS      -->
+<!--    SON CONFIGS Y ESAS COSAS           -->
+<!--    EL ORDEN ES BASTANTE IMPORTANTE    -->
+
+<!-- AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
+<script>
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyC1b5Uol4qrue5_3M7MwV6CD_9RULKg8aM",
+  authDomain: "irene-58167.firebaseapp.com",
+  databaseURL: "https://irene-58167.firebaseio.com",
+  storageBucket: "irene-58167.appspot.com",
+  messagingSenderId: "696411778762"
+};
+firebase.initializeApp(config);
+</script>
+
+
+<!-- AngularFire -->
+<script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+
+<!-- controller unico y dios maestro -->
+<script src="js/controller.js"></script>
