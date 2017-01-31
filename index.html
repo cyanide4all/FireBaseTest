@@ -1,16 +1,49 @@
-<html ng-app='irene'>
+<!DOCTYPE html>
+<html lang="es" ng-app='irene'>
   <head>
+    <title>Irene</title>
+  	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
 
 
 <!-- AQUI VIENE EL TOCHO -->
-  <body ng-controller="SampleCtrl">
-    <!-- anything typed in here is magically saved to our Firebase database! -->
-    <input type="text" ng-model="compra.objeto1"/>
-    <!-- all changes from our Firebase database magically appear here! -->
-    <h1>You said: {{ compra.objeto1 }}</h1>
+  <body ng-controller="controllerCompras">
+
+    <div class="container-fluid">
+      <h3>Tu lista de la compra:</h3>
+      <div>
+        <div ng-repeat="articulo in ListaDeLaCompra">
+          <!-- edit a message -->
+          <input class='col-xs-2' ng-model="articulo.cantidad" ng-change="ListaDeLaCompra.$save(articulo)"/>
+
+          <input class='col-xs-7' ng-model="articulo.text" ng-change="ListaDeLaCompra.$save(articulo)" />
+          <!-- delete a message -->
+          <button class="glyphicon glyphicon-check col-xs-2 btn-xs btn-danger" ng-click="ListaDeLaCompra.$remove(articulo)"></button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="container-fluid">
+      <form ng-submit="addArticulo()">
+        <h4>Nuevo artículo</h4>
+        <div class=" container-fluid row">
+          <input id='borrarNombre' class='col-xs-7' ng-model="nuevoArticulo_nombre" placeholder="Nombre"/>
+          <input id="borrarCantidad" class='col-xs-2' ng-model="nuevoArticulo_cantidad" type="number" value='1' placeholder="1"/>
+          <button class="col-xs-2 glyphicon glyphicon-ok btn-xs btn-success" type="submit"></button>
+        </div>
+      </form>
+    </div>
   </body>
-</html>
+
+
+
+
 </html>
 
 
@@ -29,17 +62,16 @@
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-database.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-messaging.js"></script>
 <script>
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyC1b5Uol4qrue5_3M7MwV6CD_9RULKg8aM",
-  authDomain: "irene-58167.firebaseapp.com",
-  databaseURL: "https://irene-58167.firebaseio.com",
-  storageBucket: "irene-58167.appspot.com",
-  messagingSenderId: "696411778762"
-};
-firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC1b5Uol4qrue5_3M7MwV6CD_9RULKg8aM",
+    authDomain: "irene-58167.firebaseapp.com",
+    databaseURL: "https://irene-58167.firebaseio.com",
+    storageBucket: "irene-58167.appspot.com",
+    messagingSenderId: "696411778762"
+  };
+  firebase.initializeApp(config);
 </script>
-
 
 <!-- AngularFire -->
 <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
