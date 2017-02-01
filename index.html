@@ -15,10 +15,10 @@
 <!-- AQUI VIENE EL TOCHO -->
   <body ng-controller="controllerCompras">
 
-    <div class="container-fluid">
-      <h3>Tu lista de la compra:</h3>
+    <div class="panel panel-default container-fluid">
+      <div class="panel-heading"><h3>Tu lista de la compra:</h3></div>
       <div>
-        <div ng-repeat="articulo in ListaDeLaCompra">
+        <div class="panel-body" ng-repeat="articulo in ListaDeLaCompra">
           <!-- edit a message -->
           <input class='col-xs-2' ng-model="articulo.cantidad" ng-change="ListaDeLaCompra.$save(articulo)"/>
 
@@ -28,16 +28,18 @@
         </div>
       </div>
     </div>
-    <hr>
-    <div class="container-fluid">
-      <form ng-submit="addArticulo()">
-        <h4>Nuevo artículo</h4>
-        <div class=" container-fluid row">
-          <input id='borrarNombre' class='col-xs-7' ng-model="nuevoArticulo_nombre" placeholder="Nombre"/>
-          <input id="borrarCantidad" class='col-xs-2' ng-model="nuevoArticulo_cantidad" type="number" value='1' placeholder="1"/>
-          <button class="col-xs-2 glyphicon glyphicon-ok btn-xs btn-success" type="submit"></button>
-        </div>
-      </form>
+
+    <div class="panel panel-default container-fluid">
+      <div class="panel-heading"><h4>Nuevo artículo</h4></div>
+      <div class="panel-body">
+        <form ng-submit="addArticulo()">
+          <div class=" container-fluid row">
+            <input id='borrarNombre' class='col-xs-7' ng-model="nuevoArticulo_nombre" placeholder="Nombre"/>
+            <input id="borrarCantidad" class='col-xs-2' ng-model="nuevoArticulo_cantidad" type="number" value='1' placeholder="1"/>
+            <button class="col-xs-2 glyphicon glyphicon-ok btn-xs btn-success" type="submit"></button>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 
@@ -56,6 +58,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
 
 <!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.7/firebase.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase-auth.js"></script>

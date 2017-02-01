@@ -12,6 +12,7 @@ html {
 body {
   background-image: url("../../recursos/fondo.jpg");
   background-repeat: no-repeat;
+  background-position: right top;
   margin: 0;
 }
 article,
@@ -5451,6 +5452,8 @@ button.list-group-item-danger.active:focus {
 }
 .panel {
   margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   background-color: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
